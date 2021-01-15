@@ -9,11 +9,11 @@
 #     print('Cannot add string to integer value')
     
 
-lst = [1,2,3,4,5,6,7,8,7,'string',5,3,2]
+# lst = [1,2,3,4,5,6,7,8,7,'string',5,3,2]
 
-for number in lst:
-    try:
-        print(int(number))
-    except Exception as e:
-        print(e)
+# for number in lst:
+#     try:
+#         print(int(number))
+#     except Exception as e:
+#         print(e)
         
