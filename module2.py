@@ -1,3 +1,3 @@
-import module1
+from module1 import *
 name = input('Enter your name: ')
-module1.print_name(name)
+print_name(name)
