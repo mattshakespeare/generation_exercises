@@ -72,8 +72,6 @@ cur.execute('''CREATE TABLE IF NOT EXISTS customer_spend(
                 average_spend FLOAT NOT NULL
                 );''')
 
-cur.execute('SELECT * FROM sales')
-sales = cur.fetchall()
 
 #find sum and average for each customer id and insert into table
 cur.execute('''SELECT customer_id, SUM(purchase_amount) as s, AVG(purchase_amount) as a
@@ -83,6 +81,7 @@ total = cur.fetchall()
 
 #insert values into table
 for row in total:
+    
     cur.execute('''INSERT INTO customer_spend(customer_id, total_spend, average_spend)
                     VALUES(%s,%s,%s)''', (row['customer_id'], row['s'], row['a']))
     con.commit()
@@ -97,7 +96,9 @@ cur.execute('''CREATE TABLE IF NOT EXISTS product_count(
 
 cur.execute('SELECT customer_id FROM sales GROUP BY customer_id')
 customer_id = cur.fetchall()
+
 for i in customer_id:
+    
     cur.execute(f'''SELECT customer_id, product_id, COUNT(customer_id) as q
                     FROM warehouse.sales
                     WHERE customer_id = {i['customer_id']}
